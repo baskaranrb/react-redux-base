@@ -1,16 +1,36 @@
 import React from 'react'
-import { Button, TextField, Container, Grid } from '@material-ui/core';
+import { Button, TextField, Container, makeStyles, Avatar, Typography, CssBaseline } from '@material-ui/core';
+import { LockOutlined } from '@material-ui/icons';
+
+const useStyles = makeStyles(theme => ({
+  lockAvatar: {
+    backgroundColor: theme.palette.secondary.main,
+    margin: theme.spacing(1),
+  },
+  paper: {
+
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: theme.spacing(8)
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  }
+}));
 
 const Login = () => {
+  const classes = useStyles();
   return (
     <Container maxWidth="xs">
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
-      >
-        <h1>Login page</h1>
+    <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.lockAvatar}>
+          <LockOutlined />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
         <form>
           <TextField
             label="Username"
@@ -29,12 +49,13 @@ const Login = () => {
           <Button
             variant="contained"
             color="primary"
+            className={classes.submit}
             fullWidth
           >
-            Login
+            Sign in
           </Button>
         </form>
-      </Grid>
+      </div>
     </Container>
   )
 }
